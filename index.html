@@ -2,8 +2,11 @@
 <html>
   <head>
 	 <center>
-	   <!-- Di Buat Oleh Ahmat Badali -->
-	 	<title>Bot Nulis - Jamet1337</title>	
+	   <!-- Di Buat Oleh 
+	   FERDI Z-AFK
+	   HADI
+     MHAK BAR BAR-->
+	 	<title>Bot Nulis - FERDI Z-AFK</title>	
 			  	 <link type="image/png" href="https://b.top4top.io/p_1833lzkex0.png" rel="icon">
 				 <meta property="og:image" content="https://b.top4top.io/p_1833lzkex0.png">
 				 <meta content="Bot Untuk Menulis Otomatis." name="description">
@@ -11,78 +14,44 @@
 				 <meta name="theme-color" content="black">
 				 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="tile">
-  <!-- Hasil Gambar Akan Muncul Di Sini -->
-                    <div class="tile-body" id="hasil">
-                    </div>
-                    </div>
-                    <div class="tile">
-                    <div class="tile-body">
-                    <br>
-                    <textarea id='nama' class="form-control" placeholder="Masukan nama kamu !" ></textarea>
-                    <br>
-                    <textarea id='kelas' class="form-control" placeholder="Masukan kelas !" ></textarea>
-                    <br>
-                    <textarea id='nomor' class="form-control" placeholder="Masukan nomor absen !" ></textarea>
-                    <br>
-                    <textarea id='teks' class="form-control" placeholder="Masukan Text Yang Ingin Di Tulis !" rows="12"></textarea>
-                    </div>
-                    </div>		
-                    <div class="tile">
-                    <div class="row">
-                    </div>
-                    <div class="col">
-                    <input type='button' onclick="buat()"  value="TULIS" id='button' class="btn btn-danger btn-block">
-                    </div>
-                    </div>
-                    </div>
+	<div class="tile">
+		<!-- Hasil Gambar Akan Muncul Di Sini -->
+		<div class="tile-body" id="hasil">
+		</div>
+	</div>
+	<div class="tile">
+		<div class="tile-body">
+			<br>
+			<textarea id='nama' class="form-control" placeholder="Masukan nama kamu !" required=true></textarea>
+			<br>
+			<textarea id='kelas' class="form-control" placeholder="Masukan kelas !" required=true></textarea>
+			<br>
+			<textarea id='nomor' class="form-control" placeholder="Masukan nomor absen !" required=true></textarea>
+			<br>
+			<textarea id='teks' class="form-control" placeholder="Masukan Text Yang Ingin Di Tulis !" rows="12" required=true></textarea>
+		</div>
+	</div>
+	<div class="tile">
+		<div class="row">
+		</div>
+		<div class="col">
+			<input type='button' onclick="buat()" value="TULIS" id='button' class="btn btn-danger btn-block">
+		</div>
+	</div>
                     
-                    <script>
-                            function buat() {
-                                var xhr = new XMLHttpRequest();
-                                var jeneng = encodeURIComponent(document.getElementById("nama").value);
-                                var kelase = encodeURIComponent(document.getElementById("kelas").value);
-                                var nomore = encodeURIComponent(document.getElementById("nomor").value);
-                                var isi = encodeURIComponent(document.getElementById("teks").value);
-                                var url = "https://fdz-app.herokuapp.com/api/tulis?nama="+jeneng"&no="+nomore"&kelas="+kelase"&text="+isi;
-                    
-                                xhr.onloadstart = function () {
-                                    document.getElementById("button").innerHTML = "Loading...";
-                                }
-                    
-                                xhr.onerror = function () {
-                                    alert("Gagal mengambil data");
-                                };
-                    
-                                xhr.onloadend = function () {
-                                    if (this.responseText !== "") {
-                                        //alert(encodeURIComponent(gans));
-                                        var data = JSON.parse(this.responseText);
-                                        var img = document.createElement("img");
-                                  img.setAttribute("width", "304");
-                                        img.src = data.image;
-                                        var name = document.createElement("h3");
-                                        name.innerHTML = data.status;
-                                      if (data.status == 'Error'){
-                                         alert('Error');
-                                         alert('Harap masukan input dengan benar!');
-                                      }else{
-                                        document.getElementById("hasil").append(img);
-                    
-                                        setTimeout(function () {
-                                            document.getElementById("button").innerHTML = "Buat Lagi";
-                                        }, 3000);
-                                      }
-                                    }
-                                };
-                                xhr.open("GET", url, true);
-                                xhr.send();
-                            }
-                    
-                            function clearResult() {
-                                document.getElementById("hasil").innerHTML = "";
-                            }
-                    </script>
+	<script>
+		function buat() {
+			var jeneng = encodeURIComponent(document.getElementById("nama").value);
+			var kelase = encodeURIComponent(document.getElementById("kelas").value);
+			var nomore = encodeURIComponent(document.getElementById("nomor").value);
+			var isi = encodeURIComponent(document.getElementById("teks").value);
+			document.querySelector('#hasil').innerHTML = `<img style='max-width: 300px;max-height: 300px;' src='https://fdz-app.herokuapp.com/api/tulis?nama=${jeneng}&no=${nomore}&kelas=${kelase}&text=${isi}' alt="hasil.png"></img>`;
+		}
+		
+		
+		//ambil aja link api nya kalau mau gumain tapi ingat request nya jangan spam ya
+		
+	</script>
                </div>
           </div>
           </body>
