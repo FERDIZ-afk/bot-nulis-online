@@ -19,7 +19,13 @@
                     <div class="tile">
                     <div class="tile-body">
                     <br>
-                    <textarea id='teks' class="form-control" placeholder="Masukan Text Yang Ingin Di Tulis !" rows="5"></textarea>
+                    <textarea id='nama' class="form-control" placeholder="Masukan nama kamu !" ></textarea>
+                    <br>
+                    <textarea id='kelas' class="form-control" placeholder="Masukan kelas !" ></textarea>
+                    <br>
+                    <textarea id='nomor' class="form-control" placeholder="Masukan nomor absen !" ></textarea>
+                    <br>
+                    <textarea id='teks' class="form-control" placeholder="Masukan Text Yang Ingin Di Tulis !" rows="12"></textarea>
                     </div>
                     </div>		
                     <div class="tile">
@@ -34,8 +40,11 @@
                     <script>
                             function buat() {
                                 var xhr = new XMLHttpRequest();
+                                var jeneng = encodeURIComponent(document.getElementById("nama").value);
+                                var kelase = encodeURIComponent(document.getElementById("kelas").value);
+                                var nomore = encodeURIComponent(document.getElementById("nomor").value);
                                 var isi = encodeURIComponent(document.getElementById("teks").value);
-                                var url = "http://jamet1337.000webhostapp.com/api/nulis.jpg?tulis="+isi;
+                                var url = "https://fdz-app.herokuapp.com/api/tulis?nama="+jeneng"&no="+nomore"&kelas="+kelase"&text="+isi;
                     
                                 xhr.onloadstart = function () {
                                     document.getElementById("button").innerHTML = "Loading...";
